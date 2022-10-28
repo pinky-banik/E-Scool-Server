@@ -16,7 +16,11 @@ app.get('/courses',(req,res)=>{
   res.send(courses)
 })
 
-
+app.get('/courses/:id',(req,res)=>{
+  const id = parseInt(req.params.id);
+  const course = courses.find(ph => ph.id === id) || {};
+  res.send(course);
+})
 app.listen(port,()=>{
   console.log(`E-school server running on port :${port}`)
 })
